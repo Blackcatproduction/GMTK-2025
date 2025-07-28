@@ -1,6 +1,7 @@
 # GMTK-2025
 
 Game Jam Survival List
+
 Before the Game Jam:
 The Week Before:
 Get a team together if not working solo
