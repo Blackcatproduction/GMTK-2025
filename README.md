@@ -1,58 +1,33 @@
-# GMTK-2025
+# Game
 
-Game Jam Survival List
+## Story
+-
 
-Before the Game Jam:
-The Week Before:
-Get a team together if not working solo
-Tell friends/Family you have less availability that weekend
-Get some food/snacks in the house (meals not just junk)
-Sign up for itch.io and join the game jam on this official page
-Make a dummy project using your chosen tools, export it and launch it on itch for practice
+## Gameplay
+- There are two main situations for the player:
+  - Shopping
+    - While shopping, the player can talk to the current shopkeeper ? (is it a static menu where the player can only buy and leave or more like a merchant you can talk while top-down?) 
+  - Fighting
+    - While fighting, the player has to face multiple enemies that spawn randomly through the stage like thugs in an action movie.
+    - The player can change its stance from shooting, to absorbing projectiles. While absorbing, he can be hit by specific projectiles to become more powerful and get points ? (decide how are we going to score), he cannot, however, fire anymore and becomes more vulnerable to enemy damage.
+    - The fights happen in 3 arenas, representing the classical version of the movie, a remake and then a reboot. Before every fight, there's a meeting with a shopkeeper.
+    - If the player finishes all 3 arenas without killing an enemy, he finishes the game.
+    - 
 
-The Day Before:
-Install computer updates
-Create a game page on itch.io with some placeholder information
-Open up all your chosen tools, install updates
-Create a blank project, adjust your settings
-Set up version control
-Team meeting, double check version control across the team
-Set up any other tools etc Trello and fill in anything you can/placeholder info
-Keep a list of an license info you need to include from your tools
+### Stages
+3 stages, each with a different shopkeeper before them.
 
-During the Jam:
-Always:
-Eat properly
-Sleep properly
-Take breaks
-Enjoy the challenge; work hard but have fun
-Upload the most recent version of your game to your itch.io page
+#### Classical
+The first version of the movie.
 
-Day 1:
-Plan
-Scope SMALL
-Prototype, if you can't finish prototype in that time its too big
+### Controls
+**WASD** -> Movement (during shopping?/ fighting)
+**Space** -> Absorb specific projectiles ? (define which ones are absorbable)
+**LMB** -> Fire projectiles
 
-Day 2:
-Make the game's main mechanics
-Link your game to the game jam page
-Aim to complete it minus polish
-Get feedback, playtest and give feedback for some other games
+## Assets
+### Art
 
-Day 3:
-Adjust based on feedback
-Add art, sound, etc
-Complete the mechanics
+### Music
 
-Day 4:
-Polish the game (sfx, vfx, sound settings, UI)
-Create a READ-ME with license info
-Export your final builds to your chosen platforms, add them to itch.io, test them
-Get off of itch.io so all the other thousands of games can get put on there
-
-After the Jam:
-Congratulate yourself
-Update and complete your itch.io page
-Write a game post mortem
-Share your game in the game review channel
-Review people's game, give good, useful feedback
+### SFX
