@@ -16,9 +16,8 @@ public class GameOverMenuManager : MonoBehaviour
     [SerializeField]
     GameObject menu;
 
-    // Start is called before the first frame update
     void Start() {
-        GameController.controller.GameOverMenu = this;
+        GameController.controller.GameOverMenuManager = this;
         enabled = false;
     }
 
@@ -26,6 +25,9 @@ public class GameOverMenuManager : MonoBehaviour
         enabled = true;
         backFadeEffect.enabled = true;
         menu.SetActive(true);
+
+        // Pause game
+        Time.timeScale = 0;
     }
 
     public void Play() {
@@ -35,6 +37,7 @@ public class GameOverMenuManager : MonoBehaviour
         // Start fade effect
         transitionFadeEffect.FadeSpeed = 1f / playDelay;
         transitionFadeEffect.TargetAlpha = 1f;
+        transitionFadeEffect.UnscaledTime = true;
 
         StartCoroutine(WaitAndStartGame());
     }
@@ -46,18 +49,19 @@ public class GameOverMenuManager : MonoBehaviour
         // Start fade effect
         transitionFadeEffect.FadeSpeed = 1f / playDelay;
         transitionFadeEffect.TargetAlpha = 1f;
+        transitionFadeEffect.UnscaledTime = true;
 
         StartCoroutine(WaitAndGoToMainMenu());
     }
 
     IEnumerator WaitAndStartGame() {
-        yield return new WaitForSeconds(playDelay);
+        yield return new WaitForSecondsRealtime(playDelay);
 
         GameController.controller.StartGame();
     }
 
     IEnumerator WaitAndGoToMainMenu() {
-        yield return new WaitForSeconds(playDelay);
+        yield return new WaitForSecondsRealtime(playDelay);
 
         GameController.controller.ReturnToMainMenu();
     }

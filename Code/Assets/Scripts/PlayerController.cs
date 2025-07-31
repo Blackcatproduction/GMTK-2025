@@ -186,6 +186,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void TakeDamage(int damage, Vector2 direction) {
+        // Can't take damage after winning
+        if (EnemyController.controller.EnemyCount() == 0) {
+            return;
+        }
+
         //// set hurt animation
         //animator.SetTrigger("Hurt");
 

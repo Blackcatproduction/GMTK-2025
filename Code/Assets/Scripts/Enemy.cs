@@ -24,6 +24,11 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
     }
 
+    private void Start() {
+
+        EnemyController.controller.AddEnemy(this);
+    }
+
     void FixedUpdate()
     {
         rb.velocity = (player.transform.position - transform.position).normalized * moveSpeed;
@@ -42,6 +47,7 @@ public class Enemy : MonoBehaviour
     }
 
     void Die() {
+        EnemyController.controller.RemoveEnemy(this);
         Destroy(gameObject);
     }
 

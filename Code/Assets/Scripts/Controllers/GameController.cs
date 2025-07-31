@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    GameOverMenuManager gameOverMenu;
+    GameOverMenuManager gameOverMenuManager;
 
-    public GameOverMenuManager GameOverMenu { get => gameOverMenu; set => gameOverMenu = value; }
+    public GameOverMenuManager GameOverMenuManager { get => gameOverMenuManager; set => gameOverMenuManager = value; }
 
     public static GameController controller = null;
 
@@ -21,18 +21,21 @@ public class GameController : MonoBehaviour
 
 
     public void StartGame() {
+        Time.timeScale = 1;
         SceneManager.LoadScene(1);
+        // TODO Reset player data
     }
 
     public void NextArena() {
-
+        SceneManager.LoadScene(1);
     }
 
     public void CallGameOverMenu() {
-        gameOverMenu.GameOver();
+        gameOverMenuManager.GameOver();
     }
 
     public void ReturnToMainMenu() {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 }
