@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [Header("Combat")]
     //[SerializeField] float knockbackForce;
     //[SerializeField] float knockbackDuration;
-    //[SerializeField] CameraShake shakeEffect;
+    [SerializeField] CameraShake shakeEffect;
     [SerializeField] 
     int damageMultiplier = 1;
     [SerializeField]
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
     //float dashCooldown = 1f;
     //private float dashCounter, dashCoolCounter;
 
-    //public CameraShake ShakeEffect { get => shakeEffect; set => shakeEffect = value; }
+    public CameraShake ShakeEffect { get => shakeEffect; set => shakeEffect = value; }
 
     private void Start() {
         health = maxHealth;
@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
         }
         else {
             // Shake camera
-            //shakeEffect.Shake(damage * 2, 0.5f);
+            shakeEffect.Shake(damage * 2, 0.5f);
 
             //// knockback
             //StartCoroutine(SufferHitStun());
@@ -221,6 +221,8 @@ public class PlayerController : MonoBehaviour
         // Disable collider and velocity
         GetComponent<Collider2D>().enabled = false;
         rb.velocity = Vector2.zero;
+
+        GameController.controller.CallGameOverMenu();
     }
 
     public void EnableInput() {

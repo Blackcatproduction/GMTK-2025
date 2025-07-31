@@ -1,18 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    GameOverMenuManager gameOverMenu;
+
+    public GameOverMenuManager GameOverMenu { get => gameOverMenu; set => gameOverMenu = value; }
+
+    public static GameController controller = null;
+
+    private void Awake() {
+        if (controller == null) {
+            controller = this;
+
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
+    public void StartGame() {
+        SceneManager.LoadScene(1);
+    }
+
+    public void NextArena() {
+
+    }
+
+    public void CallGameOverMenu() {
+        gameOverMenu.GameOver();
+    }
+
+    public void ReturnToMainMenu() {
+        SceneManager.LoadScene(0);
     }
 }

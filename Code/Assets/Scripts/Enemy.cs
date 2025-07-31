@@ -10,6 +10,12 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int damage = 1;
 
+    [Header("Movement")]
+    [SerializeField]
+    float moveSpeed = 1f;
+    [SerializeField]
+    Rigidbody2D rb;
+
     public int Damage { get => damage; set => damage = value; }
 
     PlayerController player;
@@ -18,9 +24,9 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 2f * Time.deltaTime);
+        rb.velocity = (player.transform.position - transform.position).normalized * moveSpeed;
     }
 
     public void TakeDamage(int damage, Vector2 direction) {
