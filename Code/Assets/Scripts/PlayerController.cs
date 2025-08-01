@@ -67,9 +67,18 @@ public class PlayerController : MonoBehaviour
     public CameraShake ShakeEffect { get => shakeEffect; set => shakeEffect = value; }
 
     private void Start() {
-        health = maxHealth;
-        initialSpeed = moveSpeed;
-        //gameObject.layer = LayerMask.NameToLayer("Player");
+        // Load data from game controller
+        LoadPlayerAttributes(GameController.controller.PlayerData);
+    }
+
+    void LoadPlayerAttributes(PlayerDataSO data) {
+        maxHealth = data.maxHealth;
+        health = data.health;
+    }
+
+    void UnLoadPlayerAttributes(PlayerDataSO data) {
+        data.maxHealth = maxHealth;
+        data.health = health;
     }
 
     private void Update() {
@@ -281,5 +290,10 @@ public class PlayerController : MonoBehaviour
     // Avoids player dying after wave over
     public void ActivateWaveOverInvincibility() {
         GetComponent<Collider2D>().enabled = false;
+    }
+
+    private void OnDestroy() {
+        // Save player data to game controller
+        UnLoadPlayerAttributes(GameController.controller.PlayerData);
     }
 }
