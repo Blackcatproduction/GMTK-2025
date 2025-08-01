@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnMove(InputValue value) {
+        Debug.Log(value);
         if (/*gameStateManager.IsPaused() ||*/ !IsAlive()) {
             return;
         }
