@@ -6,7 +6,8 @@
 ## Gameplay
 - There are two main situations for the player:
   - Shopping
-    - While shopping, the player can talk to the current shopkeeper ? (is it a static menu where the player can only buy and leave or more like a merchant you can talk while top-down?) 
+    - While shopping, the player can talk to the current shopkeeper and buy some items.
+    - The shopping sequence is pretty much a static scene in which the player sees the shopkeeper and there's a dialogue box in the bottom of the screen.
   - Fighting
     - While fighting, the player has to face multiple enemies that spawn randomly through the stage like thugs in an action movie.
     - The player can change its stance from shooting, to absorbing projectiles. While absorbing, he can be hit by specific projectiles to become more powerful and get points ? (decide how are we going to score), he cannot, however, fire anymore and becomes more vulnerable to enemy damage.
