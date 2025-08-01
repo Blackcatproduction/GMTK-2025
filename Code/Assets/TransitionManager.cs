@@ -21,13 +21,13 @@ public class TransitionManager : MonoBehaviour
         transitionFadeEffect.FadeSpeed = 1f / playDelay;
         transitionFadeEffect.TargetAlpha = 1f;
 
-        StartCoroutine(WaitAndStartGame());
+        StartCoroutine(WaitAndGoToShop());
     }
 
 
-    IEnumerator WaitAndStartGame() {
+    IEnumerator WaitAndGoToShop() {
         yield return new WaitForSeconds(playDelay);
 
-        GameController.controller.NextArena();
+        GameController.controller.NextShop();
     }
 }
