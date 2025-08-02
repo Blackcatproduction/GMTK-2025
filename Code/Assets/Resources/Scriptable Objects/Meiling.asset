@@ -14,22 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 2f4fb75eb942320409d8d2ca7229bead, type: 3}
   entranceSpeeches:
-  - "Hmph. I hope you\u2019re taking this seriously.   "
-  - "You again\u2026? Fine, just take what you need.  "
-  - 'Are you for real? Just take what you need and get out already.  '
-  - 'You already know the drill. Just take whatever you need and leave me alone.  '
-  - "Don\u2019t look at me like that. I don\u2019t HAVE to like you.  "
-  - "\u2026  "
-  - "Ugh\u2026 you\u2019re so clueless!  "
-  - "Don\u2019t tell me you\u2019re STUCK\u2026  "
+  - 'Ah, a fresh new start! T-take whatever you need to win, okay?  '
+  - "O-oh, it\u2019s you again! Well then\u2026 you already know what to do, right?  "
+  - "H-hey there! I see you\u2019re here again\u2026 Well, I hope I can help\u2026  "
+  - "B-back again, I see! Okay then\u2026  "
+  - "Um\u2026 haven\u2019t you wondered\u2026 er\u2026 nevermind!  "
+  - "Um\u2026 I hope I can help\u2026 but\u2026  "
+  - "I\u2026 I don\u2019t know how to say this, but\u2026  "
+  - "I don\u2019t know what else to do\u2026 Please\u2026 you must\u2026  "
   exitSpeeches:
-  - 'You better win.  '
-  - "Ugh\u2026 would you just go already?  "
-  - "I\u2019m tired of dealing with you already\u2026  "
-  - "You know you don\u2019t HAVE to come here, right?  "
-  - "What\u2019s that? You think I\u2019m \u201Ctoo mean\u201D? Come on, it\u2019s
-    just words. Learn to take a hit,  buddy. "
-  - "You know\u2026 you really should be careful about who you trust.  "
-  - "Don\u2019t you realize what this is?! Don\u2019t listen to that other shopkeeper!  "
-  - "You\u2019re insane if you think playing the game THEIR way will get you out.
-    Let me spell it  out for you\u2026\\nYou. Need. To. Take. A. HIT.  "
+  - 'I h-hope you do well out there!  '
+  - "You\u2019ll win this time, r-right?  "
+  - "B-better luck next time\u2026  "
+  - "Um\u2026 is it just me, or are you also getting a sense of deja vu\u2026?  "
+  - "A-actually\u2026 I was meaning to say\u2026 there has to be a better way to
+    do things, right?  "
+  - "Y-you\u2019re a good guy, right? Then maybe you\u2026 n-nevermind!  "
+  - "Please\u2026 you have to escape\u2026 that person is\u2026!  "
+  - "Y-you\u2019re the hero\u2026 right? Then you have to beat the REAL bad guy\u2026
+    don\u2019t let them  fool you\u2026 or you\u2019ll be stuck\u2026 like\u2026
+    like\u2026 "
