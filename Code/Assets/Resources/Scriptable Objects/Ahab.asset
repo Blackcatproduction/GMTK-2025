@@ -12,5 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eea7b9f15594f6479881dc0e1057f11, type: 3}
   m_Name: Ahab
   m_EditorClassIdentifier: 
-  entranceSpeeches: []
-  exitSpeeches: []
+  sprite: {fileID: 21300000, guid: 41aa899a050499b45b503be92d50d22f, type: 3}
+  entranceSpeeches:
+  - 'Ah, a fresh new start! T-take whatever you need to win, okay?  '
+  - "O-oh, it\u2019s you again! Well then\u2026 you already know what to do, right?  "
+  - "H-hey there! I see you\u2019re here again\u2026 Well, I hope I can help\u2026  "
+  - "B-back again, I see! Okay then\u2026  "
+  - "Um\u2026 haven\u2019t you wondered\u2026 er\u2026 nevermind!  "
+  - "Um\u2026 I hope I can help\u2026 but\u2026  "
+  - "I\u2026 I don\u2019t know how to say this, but\u2026  "
+  - "I don\u2019t know what else to do\u2026 Please\u2026 you must\u2026  "
+  exitSpeeches:
+  - 'I h-hope you do well out there!  '
+  - "You\u2019ll win this time, r-right?  "
+  - "B-better luck next time\u2026  "
+  - "Um\u2026 is it just me, or are you also getting a sense of deja vu\u2026?  "
+  - "A-actually\u2026 I was meaning to say\u2026 there has to be a better way to
+    do things, right?  "
+  - "Y-you\u2019re a good guy, right? Then maybe you\u2026 n-nevermind!  "
+  - "Please\u2026 you have to escape\u2026 that person is\u2026!  "
+  - "Y-you\u2019re the hero\u2026 right? Then you have to beat the REAL bad guy\u2026
+    don\u2019t let them  fool you\u2026 or you\u2019ll be stuck\u2026 like\u2026
+    like\u2026 "

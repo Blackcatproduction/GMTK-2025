@@ -12,5 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eea7b9f15594f6479881dc0e1057f11, type: 3}
   m_Name: Meiling
   m_EditorClassIdentifier: 
-  entranceSpeeches: []
-  exitSpeeches: []
+  sprite: {fileID: 21300000, guid: 2f4fb75eb942320409d8d2ca7229bead, type: 3}
+  entranceSpeeches:
+  - "Hmph. I hope you\u2019re taking this seriously.   "
+  - "You again\u2026? Fine, just take what you need.  "
+  - 'Are you for real? Just take what you need and get out already.  '
+  - 'You already know the drill. Just take whatever you need and leave me alone.  '
+  - "Don\u2019t look at me like that. I don\u2019t HAVE to like you.  "
+  - "\u2026  "
+  - "Ugh\u2026 you\u2019re so clueless!  "
+  - "Don\u2019t tell me you\u2019re STUCK\u2026  "
+  exitSpeeches:
+  - 'You better win.  '
+  - "Ugh\u2026 would you just go already?  "
+  - "I\u2019m tired of dealing with you already\u2026  "
+  - "You know you don\u2019t HAVE to come here, right?  "
+  - "What\u2019s that? You think I\u2019m \u201Ctoo mean\u201D? Come on, it\u2019s
+    just words. Learn to take a hit,  buddy. "
+  - "You know\u2026 you really should be careful about who you trust.  "
+  - "Don\u2019t you realize what this is?! Don\u2019t listen to that other shopkeeper!  "
+  - "You\u2019re insane if you think playing the game THEIR way will get you out.
+    Let me spell it  out for you\u2026\\nYou. Need. To. Take. A. HIT.  "
