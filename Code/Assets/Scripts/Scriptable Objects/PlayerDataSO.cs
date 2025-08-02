@@ -14,6 +14,6 @@ public class PlayerDataSO : ScriptableObject
         this.maxHealth = so.maxHealth;
         this.health = so.health;
         this.score = so.score;
-        this.loopIndex = loopIndex;
+        this.loopIndex = so.loopIndex;
     }
 }

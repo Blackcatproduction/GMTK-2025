@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d13115cdee874447b5fd73ddf2ad34e, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: 4eea7b9f15594f6479881dc0e1057f11, type: 3}
+  m_Name: Ahab
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  health: 0
-  score: 0
+  entranceSpeeches: []
+  exitSpeeches: []
