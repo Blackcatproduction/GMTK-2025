@@ -294,7 +294,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnDestroy() {
-        // Save player data to game controller
-        UnLoadPlayerAttributes(GameController.controller.PlayerData);
+        // Save player data to game controller, if player didn't die
+        if (IsAlive()) {
+            UnLoadPlayerAttributes(GameController.controller.PlayerData);
+        }
     }
 }

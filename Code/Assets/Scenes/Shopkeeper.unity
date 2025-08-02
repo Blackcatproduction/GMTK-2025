@@ -718,6 +718,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1940543651}
     - target: {fileID: 234842312546326204, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
+      propertyPath: leaveButton
+      value: 
+      objectReference: {fileID: 43120395814804573}
+    - target: {fileID: 234842312546326204, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
       propertyPath: shopkeeperNameComponent
       value: 
       objectReference: {fileID: 1012479795}
@@ -813,6 +817,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4025873967401235868, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
+      propertyPath: m_Name
+      value: Leave Button
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -823,6 +831,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4025873967324202401, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
   m_PrefabInstance: {fileID: 43120395814804571}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &43120395814804573 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4025873967401235866, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
+  m_PrefabInstance: {fileID: 43120395814804571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5062122706022697309
 PrefabInstance:
   m_ObjectHideFlags: 0

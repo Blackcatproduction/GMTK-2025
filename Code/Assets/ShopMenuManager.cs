@@ -15,6 +15,8 @@ public class ShopMenuManager : MonoBehaviour
     [SerializeField]
     ImageFadeEffect fadeEffect;
 
+    [SerializeField]
+    Button leaveButton;
 
     [SerializeField]
     int currentLoop;
@@ -71,20 +73,22 @@ public class ShopMenuManager : MonoBehaviour
     }
 
     public void Leave() {
-        // Show leaving speech
-        shopkeeperDialog.text = shopkeeperSpeeches.entranceSpeeches[Mathf.Min(currentLoop, 7)];
-
-        // Disappear buttons
-        menu.SetActive(false);
-
-        // Start fade effect
-        fadeEffect.FadeSpeed = 1f / playDelay;
-        fadeEffect.TargetAlpha = 1f;
 
         StartCoroutine(WaitAndStartArena());
     }
 
     IEnumerator WaitAndStartArena() {
+        // Show leaving speech
+        shopkeeperDialog.text = shopkeeperSpeeches.exitSpeeches[Mathf.Min(currentLoop, 7)];
+
+        // Disappear buttons
+        leaveButton.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(shopkeeperDialog.text.Length * 0.03f);
+
+        // Start fade effect
+        fadeEffect.FadeSpeed = 1f / playDelay;
+        fadeEffect.TargetAlpha = 1f;
         yield return new WaitForSeconds(playDelay);
 
         GameController.controller.NextArena();
