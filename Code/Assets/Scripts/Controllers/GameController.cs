@@ -38,6 +38,7 @@ public class GameController : MonoBehaviour
 
     public void NextShop() {
         SceneManager.LoadScene(1);
+        playerData.loopIndex += 1;
     }
 
     public void CallGameOverMenu() {
