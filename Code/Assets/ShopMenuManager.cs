@@ -15,22 +15,28 @@ public class ShopMenuManager : MonoBehaviour
     [SerializeField]
     ImageFadeEffect fadeEffect;
 
+
     [SerializeField]
-    TextMeshProUGUI shopkeeperDialog;
-
-    ShopkeeperSpeechSO shopkeeperSpeeches;
-
     int currentLoop;
 
+
+    [Header("Shopkeeper")]
     [SerializeField]
-    Image shopkeeper;
+    SpriteRenderer shopkeeper;
+
+    [SerializeField]
+    TextMeshProUGUI shopkeeperDialog;
+    [SerializeField]
+    TextMeshProUGUI shopkeeperNameComponent;
+
+    ShopkeeperSpeechSO shopkeeperSpeeches;
 
 
     void Start() {
         menu.SetActive(true);
 
         // Load current shopkeeper and speeches
-        currentLoop = (GameController.controller.PlayerData.loopIndex/3)+1;
+        currentLoop = GameController.controller.PlayerData.loopIndex/3;
         int currentShopkeeper = GameController.controller.PlayerData.loopIndex % 3;
 
         string shopkeeperName;
@@ -53,13 +59,15 @@ public class ShopMenuManager : MonoBehaviour
                 break;
 
         }
+        shopkeeperNameComponent.text = shopkeeperName;
+
         shopkeeperSpeeches = Resources.Load<ShopkeeperSpeechSO>("Scriptable Objects/" + shopkeeperName);
 
         // Set speeches
         shopkeeperDialog.text = shopkeeperSpeeches.entranceSpeeches[Mathf.Min(currentLoop, 7)];
 
         // Set shopkeeper appearance
-        shopkeeper.sprite = shopkeeper.sprite;
+        shopkeeper.sprite = shopkeeperSpeeches.sprite;
     }
 
     public void Leave() {
@@ -74,10 +82,6 @@ public class ShopMenuManager : MonoBehaviour
         fadeEffect.TargetAlpha = 1f;
 
         StartCoroutine(WaitAndStartArena());
-    }
-
-    private void OnDestroy() {
-        Resources.UnloadAsset(shopkeeperSpeeches);
     }
 
     IEnumerator WaitAndStartArena() {

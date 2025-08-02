@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
         if (controller == null) {
             controller = this;
 
+            ResetPlayerData();
+
             DontDestroyOnLoad(gameObject);
         } else {
             Destroy(gameObject);
@@ -54,7 +56,5 @@ public class GameController : MonoBehaviour
         PlayerDataSO baseData = Resources.Load<PlayerDataSO>("Scriptable Objects/BasePlayerData");
 
         playerData.CopyValues(baseData);
-
-        Resources.UnloadAsset(baseData);
     }
 }

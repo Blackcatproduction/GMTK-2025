@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void UnLoadPlayerAttributes(PlayerDataSO data) {
+        Debug.Log("Unloaded");
         data.maxHealth = maxHealth;
         data.health = health;
     }
