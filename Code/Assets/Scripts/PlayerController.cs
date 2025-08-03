@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     GameObject projectile;
     [SerializeField]
     bool isAbsorbing = false;
-    float firingCooldown = 1.5f;
+    float firingCooldown = 1.1f;
     [SerializeField]
     bool isFiringCooldown = false;
     public bool IsFiringCooldown { get => isFiringCooldown; set {
@@ -342,6 +342,9 @@ public class PlayerController : MonoBehaviour
                 // Get knockback direction
                 Vector2 knockbackDirection = transform.position - collision.transform.position;
                 TakeDamage(enemy.Damage, knockbackDirection.normalized);
+
+                // Reset damage multiplier
+                damageMultiplier = 1;
             }
 
         }
@@ -349,7 +352,12 @@ public class PlayerController : MonoBehaviour
             Projectile hitProjectile = collision.collider.GetComponent<Projectile>();
             // TODO Check if the projectile is enemies'
             if (isAbsorbing) {
-                damageMultiplier += 1;
+                damageMultiplier += hitProjectile.Damage;
+
+                // Absorb enough energy without killing enemies and you win
+                if (damageMultiplier >= 32 && EnemyController.controller.EnemyCount() == 3) {
+                    GameController.controller.CallGameOverMenu(true);
+                }
             } else {
                 TakeDamage(hitProjectile.Damage, transform.position - collision.transform.position);
 

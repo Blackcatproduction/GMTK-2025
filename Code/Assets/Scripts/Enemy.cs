@@ -9,12 +9,15 @@ public class Enemy : MonoBehaviour
     int health = 1;
     [SerializeField]
     int damage = 1;
+    int baseHealth;
 
     [Header("Movement")]
     [SerializeField]
     float moveSpeed = 1f;
     [SerializeField]
     Rigidbody2D rb;
+    [SerializeField]
+    SpriteRenderer spriteRenderer;
 
     public int Damage { get => damage; set => damage = value; }
 
@@ -25,8 +28,8 @@ public class Enemy : MonoBehaviour
     }
 
     private void Start() {
-
         EnemyController.controller.AddEnemy(this);
+        baseHealth = health;
     }
 
     void FixedUpdate()
@@ -40,6 +43,11 @@ public class Enemy : MonoBehaviour
 
         // update health
         health -= damage;
+
+        // Indicate damage through transparency
+        Color color = spriteRenderer.color;
+        color.a = Mathf.Min(1f, 0.5f + (float)health / baseHealth);
+        spriteRenderer.color = color;
 
         if (!IsAlive()) {
             Die();

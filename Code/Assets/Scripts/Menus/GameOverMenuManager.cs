@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameOverMenuManager : MonoBehaviour
 {
@@ -16,18 +17,34 @@ public class GameOverMenuManager : MonoBehaviour
     [SerializeField]
     GameObject menu;
 
+    [SerializeField]
+    TextMeshProUGUI menuMessage;
+
     void Start() {
         GameController.controller.GameOverMenuManager = this;
         enabled = false;
     }
 
-    public void GameOver() {
-        enabled = true;
-        backFadeEffect.enabled = true;
-        menu.SetActive(true);
+    public void GameOver(bool winSituation = false) {
+        if (winSituation) {
+            menuMessage.text = "You win!";
 
-        // Pause game
-        Time.timeScale = 0;
+            enabled = true;
+            backFadeEffect.enabled = true;
+            menu.SetActive(true);
+
+            // Pause game
+            Time.timeScale = 0;
+        } else {
+            menuMessage.text = "Game Over";
+
+            enabled = true;
+            backFadeEffect.enabled = true;
+            menu.SetActive(true);
+
+            // Pause game
+            Time.timeScale = 0;
+        }
     }
 
     public void Play() {

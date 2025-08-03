@@ -53,8 +53,8 @@ public class GameController : MonoBehaviour
         playerData.loopIndex += 1;
     }
 
-    public void CallGameOverMenu() {
-        gameOverMenuManager.GameOver();
+    public void CallGameOverMenu(bool winSituation = false) {
+        gameOverMenuManager.GameOver(winSituation);
     }
 
     public void ReturnToMainMenu() {
