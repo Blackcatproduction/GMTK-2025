@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    Camera mainCamera;
+
     [Header("Health")]
     [SerializeField] 
     int maxHealth;
@@ -15,8 +17,6 @@ public class PlayerController : MonoBehaviour
     //Image healthBar;
 
     [Header("Components")]
-    [SerializeField]
-    Animator animator;
     [SerializeField]
     SpriteRenderer spriteRenderer;
 
@@ -30,6 +30,18 @@ public class PlayerController : MonoBehaviour
     GameObject projectile;
     [SerializeField]
     bool isAbsorbing = false;
+    float firingCooldown = 1.5f;
+    [SerializeField]
+    bool isFiringCooldown = false;
+    public bool IsFiringCooldown { get => isFiringCooldown; set {
+            isFiringCooldown = value;
+
+            if (value) {
+                // Wait cooldown time until being able to fire again
+                StartCoroutine(WaitUntilCooldown());
+            }
+        }
+    }
 
     [Header("Movement")]
     [SerializeField]
@@ -40,14 +52,31 @@ public class PlayerController : MonoBehaviour
     public Vector2 MoveDirection { get => moveDirection; set {
             moveDirection = value;
 
-            // Updates facing direction if changing movement direction not to stop
-            if (moveDirection.x != 0 || moveDirection.y != 0) {
-                facingDirection = moveDirection;
+            // Updates facing direction sprite if changing movement direction not to stop
+            if (moveDirection.x != 0 && moveDirection.y != 0) {
+                return;
+            }
+
+            if (MoveDirection.x > 0) {
+                spriteRenderer.sprite = facingRight;
+            } else if (MoveDirection.x < 0) {
+                spriteRenderer.sprite = facingLeft;
+            } else if (MoveDirection.y > 0) {
+                spriteRenderer.sprite = facingUp;
+            } else if (MoveDirection.y < 0) {
+                spriteRenderer.sprite = facingDown;
             }
         }
     }
 
-    Vector2 facingDirection;
+    [SerializeField]
+    Sprite facingLeft;
+    [SerializeField]
+    Sprite facingDown;
+    [SerializeField]
+    Sprite facingRight;
+    [SerializeField]
+    Sprite facingUp;
     //[SerializeField]
     //bool isInHitstun = false;
     float initialSpeed = 1f;
@@ -69,6 +98,9 @@ public class PlayerController : MonoBehaviour
     private void Start() {
         // Load data from game controller
         LoadPlayerAttributes(GameController.controller.PlayerData);
+
+        // Load camera
+        mainCamera = Camera.main;
     }
 
     void LoadPlayerAttributes(PlayerDataSO data) {
@@ -117,12 +149,20 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        // Get mouse position
+        Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+        if ((Vector2) transform.position == mousePosition) {
+            return;
+        }
+        Vector3 fireDirection = ((Vector3)mousePosition - transform.position).normalized;
+
         // Create new projectile and fire to player's direction
         GameObject newProjectile = Instantiate(projectile, transform.parent);
-        newProjectile.transform.position = (Vector2)transform.position + facingDirection * 1f;
+        newProjectile.transform.position = transform.position + fireDirection * spriteRenderer.sprite.bounds.size.y/2*1.2f;
 
-        newProjectile.GetComponent<Rigidbody2D>().velocity = facingDirection * 10f;
-        newProjectile.GetComponent<Projectile>().Damage = newProjectile.GetComponent<Projectile>().Damage * damageMultiplier;
+        newProjectile.GetComponent<Rigidbody2D>().velocity = fireDirection * 10f;
+        newProjectile.GetComponent<Projectile>().Damage *= damageMultiplier;
     }
 
     void OnChangeAbsorb(InputValue value) {
@@ -149,6 +189,12 @@ public class PlayerController : MonoBehaviour
     //void OnPause(InputValue value) {
     //    gameStateManager.ProcessPause();
     //}
+
+    IEnumerator WaitUntilCooldown() {
+        yield return new WaitForSeconds(firingCooldown);
+
+        IsFiringCooldown = false;
+    }
 
     void Run() {
         rb.velocity = moveSpeed * MoveDirection;
