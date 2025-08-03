@@ -195,7 +195,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 24ba71d0af07010488550784e5cf6c72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -674,6 +674,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe08c98b90ec69441bc087259162c41b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pastScenario: {fileID: 21300000, guid: 24ba71d0af07010488550784e5cf6c72, type: 3}
+  presentScenario: {fileID: 21300000, guid: 2bbb650ef7b4ddb4796e303dc09e56a2, type: 3}
+  futureScenario: {fileID: 21300000, guid: 36eae87c541176c419f5bfe321477307, type: 3}
+  pastEnemy: {fileID: 21300000, guid: 82f351eaae9cf304db09109f09bea092, type: 3}
+  presentEnemy: {fileID: 21300000, guid: c7f05683702d52342b4e0ae71d029012, type: 3}
+  futureEnemy: {fileID: 21300000, guid: a7d5854d69fc80245bdc9e800f2b6678, type: 3}
+  enemies:
+  - {fileID: 1551593017}
+  - {fileID: 1431990854}
+  - {fileID: 1710265664}
+  scenario: {fileID: 108045378}
 --- !u!114 &1310170764 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6191451904523488910, guid: bb23385d488dfee4eaeeb8d137be1c7b, type: 3}
@@ -1129,6 +1140,16 @@ PolygonCollider2D:
       - {x: 4.7140274, y: 2.6725}
       - {x: -4.006165, y: 2.6730099}
   m_UseDelaunayMesh: 0
+--- !u!212 &1431990854 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5148454844958082699, guid: 24e6e2204c39b2e4689e97dcb18b808d, type: 3}
+  m_PrefabInstance: {fileID: 608152065}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1551593017 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5148454844958082699, guid: 24e6e2204c39b2e4689e97dcb18b808d, type: 3}
+  m_PrefabInstance: {fileID: 2947555646096292353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1687129548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1186,6 +1207,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24e6e2204c39b2e4689e97dcb18b808d, type: 3}
+--- !u!212 &1710265664 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5148454844958082699, guid: 24e6e2204c39b2e4689e97dcb18b808d, type: 3}
+  m_PrefabInstance: {fileID: 1687129548}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1997689720
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -35,6 +35,7 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = (player.transform.position - transform.position).normalized * moveSpeed;
+        spriteRenderer.flipX = rb.velocity.x > 0;
     }
 
     public void TakeDamage(int damage, Vector2 direction) {

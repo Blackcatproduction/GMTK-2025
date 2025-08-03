@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Qinling
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -264,12 +264,13 @@ MonoBehaviour:
   playDelay: 2.5
   menu: {fileID: 4025873968710450129}
   fadeEffect: {fileID: 0}
-  leaveButton: {fileID: 0}
+  leaveButton: {fileID: 4025873967401235866}
   currentLoop: 0
   buttonSound: {fileID: 8300000, guid: c788d0581a42af04eb9413991a3b84cc, type: 3}
   shopkeeper: {fileID: 0}
   shopkeeperDialog: {fileID: 1157657100437055651}
-  shopkeeperNameComponent: {fileID: 0}
+  shopkeeperNameComponent: {fileID: 3309225681818515943}
+  isSpeaking: 0
 --- !u!82 &284711526382213743
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,11 +281,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6909850776971223764, guid: 2cfb787ff77d1b14389ddee888a8f6ae, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f21297010951ca240ba2dc0eb0ebb0fb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -379,7 +380,7 @@ GameObject:
   - component: {fileID: 4025873967401235867}
   - component: {fileID: 4025873967401235866}
   m_Layer: 5
-  m_Name: Leave
+  m_Name: Leave Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -816,7 +817,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Welcome, pal! Everything you see is yours\u2026 for a price, of course! "
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -843,8 +844,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

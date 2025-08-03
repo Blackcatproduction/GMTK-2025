@@ -120,7 +120,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void UnLoadPlayerAttributes(PlayerDataSO data) {
-        Debug.Log("Unloaded");
         data.maxHealth = maxHealth;
         data.health = health;
     }
@@ -147,7 +146,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnMove(InputValue value) {
-        Debug.Log(value);
         if (/*gameStateManager.IsPaused() ||*/ !IsAlive()) {
             return;
         }
