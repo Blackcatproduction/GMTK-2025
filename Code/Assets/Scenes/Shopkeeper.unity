@@ -725,6 +725,14 @@ PrefabInstance:
       propertyPath: shopkeeperNameComponent
       value: 
       objectReference: {fileID: 1012479795}
+    - target: {fileID: 284711526382213743, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284711526382213743, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f21297010951ca240ba2dc0eb0ebb0fb, type: 3}
     - target: {fileID: 1157657100437055651, guid: 94763a21ac62d5b4aad7507773435aa7, type: 3}
       propertyPath: m_text
       value: 

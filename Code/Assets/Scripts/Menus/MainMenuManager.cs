@@ -17,15 +17,22 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField]
     ImageFadeEffect fadeEffect;
 
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip buttonSound;
+
     // Start is called before the first frame update
     void Start() {
         menu.SetActive(true);
         credits.SetActive(false);
         settings.SetActive(false);
         howToPlay.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Play() {
+        audioSource.PlayOneShot(buttonSound);
 
         // Disappear buttons
         menu.SetActive(false);
@@ -44,21 +51,25 @@ public class MainMenuManager : MonoBehaviour {
     }
 
     public void Credits() {
+        audioSource.PlayOneShot(buttonSound);
         menu.SetActive(false);
         credits.SetActive(true);
     }
 
     public void Settings() {
+        audioSource.PlayOneShot(buttonSound);
         menu.SetActive(false);
         settings.SetActive(true);
     }
 
     public void HowToPlay() {
+        audioSource.PlayOneShot(buttonSound);
         menu.SetActive(false);
         howToPlay.SetActive(true);
     }
 
     public void Back() {
+        audioSource.PlayOneShot(buttonSound);
         menu.SetActive(true);
         credits.SetActive(false);
         settings.SetActive(false);

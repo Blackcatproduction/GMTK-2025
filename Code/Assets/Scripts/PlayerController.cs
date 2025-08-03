@@ -93,9 +93,20 @@ public class PlayerController : MonoBehaviour
     //float dashCooldown = 1f;
     //private float dashCounter, dashCoolCounter;
 
+    [Header("Sounds")]
+    [SerializeField]
+    AudioClip playerFireSound;
+    [SerializeField]
+    AudioClip playerHurtSound;
+    [SerializeField]
+    AudioClip playerDeathSound;
+    AudioSource audioSource;
+
     public CameraShake ShakeEffect { get => shakeEffect; set => shakeEffect = value; }
 
     private void Start() {
+        audioSource = GetComponent<AudioSource>();
+
         // Load data from game controller
         LoadPlayerAttributes(GameController.controller.PlayerData);
 
@@ -145,7 +156,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnFire(InputValue value) {
-        if (/*gameStateManager.IsPaused() ||*/ !IsAlive() || isAbsorbing) {
+        if (/*gameStateManager.IsPaused() ||*/ !IsAlive() || isAbsorbing || IsFiringCooldown) {
             return;
         }
 
@@ -155,14 +166,22 @@ public class PlayerController : MonoBehaviour
         if ((Vector2) transform.position == mousePosition) {
             return;
         }
+
+        // Decide fire direction
         Vector3 fireDirection = ((Vector3)mousePosition - transform.position).normalized;
 
         // Create new projectile and fire to player's direction
         GameObject newProjectile = Instantiate(projectile, transform.parent);
-        newProjectile.transform.position = transform.position + fireDirection * spriteRenderer.sprite.bounds.size.y/2*1.2f;
+        newProjectile.transform.position = transform.position + spriteRenderer.sprite.bounds.size.y/3 * Vector3.up;
 
         newProjectile.GetComponent<Rigidbody2D>().velocity = fireDirection * 10f;
         newProjectile.GetComponent<Projectile>().Damage *= damageMultiplier;
+
+        // Play sound
+        audioSource.PlayOneShot(playerFireSound);
+
+        // Start cooldown
+        IsFiringCooldown = true;
     }
 
     void OnChangeAbsorb(InputValue value) {
@@ -171,6 +190,8 @@ public class PlayerController : MonoBehaviour
         }
 
         isAbsorbing = !isAbsorbing;
+
+        spriteRenderer.color = isAbsorbing ? new Color(0.8f, 0.8f, 1f, 0.7f) : Color.white;
     }
 
     //void OnDash(InputValue value) {
@@ -261,6 +282,9 @@ public class PlayerController : MonoBehaviour
             Die();
         }
         else {
+            // Play sound
+            audioSource.PlayOneShot(playerHurtSound);
+
             // Shake camera
             shakeEffect.Shake(damage * 2, 0.5f);
 
@@ -272,6 +296,9 @@ public class PlayerController : MonoBehaviour
     }
 
     void Die() {
+        // Play sound
+        audioSource.PlayOneShot(playerDeathSound);
+
         // Disappear the player shadow and character
         foreach (SpriteRenderer sr in GetComponentsInChildren<SpriteRenderer>()) {
             sr.color = Color.clear;

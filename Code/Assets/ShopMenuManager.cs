@@ -21,6 +21,10 @@ public class ShopMenuManager : MonoBehaviour
     [SerializeField]
     int currentLoop;
 
+    AudioSource audioSource;
+    [SerializeField]
+    AudioClip buttonSound;
+
 
     [Header("Shopkeeper")]
     [SerializeField]
@@ -33,9 +37,25 @@ public class ShopMenuManager : MonoBehaviour
 
     ShopkeeperSpeechSO shopkeeperSpeeches;
 
+    [SerializeField]
+    bool isSpeaking = false;
+    string currentSpeech;
+
+    public bool IsSpeaking { get => isSpeaking; set {
+            isSpeaking = value;
+
+            if (value) {
+                audioSource.Play();
+            } else {
+                audioSource.Stop();
+            }
+        }
+    }
 
     void Start() {
         menu.SetActive(true);
+
+        audioSource = GetComponent<AudioSource>();
 
         // Load current shopkeeper and speeches
         currentLoop = GameController.controller.PlayerData.loopIndex/3;
@@ -45,19 +65,23 @@ public class ShopMenuManager : MonoBehaviour
         switch (currentShopkeeper) {
             case 0:
                 shopkeeperName = "Qinling";
+                MusicController.controller.PlaySong(MusicController.PAST_SONG);
                 break;
 
             case 1:
                 shopkeeperName = "Meiling";
+                MusicController.controller.PlaySong(MusicController.PRESENT_SONG);
                 break;
 
             case 2:
                 shopkeeperName = "Ahab";
+                MusicController.controller.PlaySong(MusicController.FUTURE_SONG);
                 break;
 
             default:
                 Debug.LogError("Shopkeeper not found!");
                 shopkeeperName = "Qinling";
+                MusicController.controller.PlaySong(MusicController.PAST_SONG);
                 break;
 
         }
@@ -66,20 +90,59 @@ public class ShopMenuManager : MonoBehaviour
         shopkeeperSpeeches = Resources.Load<ShopkeeperSpeechSO>("Scriptable Objects/" + shopkeeperName);
 
         // Set speeches
-        shopkeeperDialog.text = shopkeeperSpeeches.entranceSpeeches[Mathf.Min(currentLoop, 7)];
+        Speak(shopkeeperSpeeches.entranceSpeeches[Mathf.Min(currentLoop, 7)]);
 
         // Set shopkeeper appearance
         shopkeeper.sprite = shopkeeperSpeeches.sprite;
     }
 
+    public void Speak(string speech) {
+        IsSpeaking = true;
+        currentSpeech = speech;
+        shopkeeperDialog.text = "";
+        StartCoroutine(ShowSpeechByChar());
+    }
+
+    IEnumerator ShowSpeechByChar() {
+        while (IsSpeaking) {
+            if (shopkeeperDialog.text.Length == currentSpeech.Length) {
+                IsSpeaking = false;
+            } else {
+                // Check dialog text size
+                int speechSize = shopkeeperDialog.text.Length;
+
+                // Get next valid character on current speech
+                while (speechSize < currentSpeech.Length && currentSpeech[speechSize] == ' ') {
+                    speechSize++;
+                }
+
+                if (speechSize >= currentSpeech.Length) {
+                    // End speech
+                    IsSpeaking = false;
+                }
+                else {
+                    shopkeeperDialog.text = currentSpeech.Substring(0, speechSize + 1);
+                }
+            }
+
+            yield return new WaitForSeconds(0.025f);
+        }
+    }
+
     public void Leave() {
+        audioSource.PlayOneShot(buttonSound);
+
+        if (IsSpeaking) {
+            IsSpeaking = false;
+            StopAllCoroutines();
+        }
 
         StartCoroutine(WaitAndStartArena());
     }
 
     IEnumerator WaitAndStartArena() {
         // Show leaving speech
-        shopkeeperDialog.text = shopkeeperSpeeches.exitSpeeches[Mathf.Min(currentLoop, 7)];
+        Speak(shopkeeperSpeeches.exitSpeeches[Mathf.Min(currentLoop, 7)]);
 
         // Disappear buttons
         leaveButton.gameObject.SetActive(false);

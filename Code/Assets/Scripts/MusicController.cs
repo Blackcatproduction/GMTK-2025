@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
+    public const int MENU_SONG = 0;
+    public const int PAST_SONG = 1;
+    public const int PRESENT_SONG = 2;
+    public const int FUTURE_SONG = 3;
+
+    [SerializeField]
     AudioClip[] songs;
 
     AudioSource audioSource;
@@ -22,4 +28,13 @@ public class MusicController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void PlaySong(int songIndex) {
+        AudioClip chosenSong = songs[songIndex];
+
+        if (audioSource.clip != chosenSong) {
+            audioSource.clip = chosenSong;
+            audioSource.Play();
+        }
+    } 
 }

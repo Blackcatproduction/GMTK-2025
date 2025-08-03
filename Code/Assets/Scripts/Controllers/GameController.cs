@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
         if (controller == null) {
             controller = this;
 
+            SceneManager.sceneLoaded += OnSceneLoaded;
+
             ResetPlayerData();
 
             DontDestroyOnLoad(gameObject);
@@ -32,6 +34,14 @@ public class GameController : MonoBehaviour
 
         // Reset player data to start game
         ResetPlayerData();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode) { 
+        switch (scene.buildIndex) {
+            case 0:
+                MusicController.controller.PlaySong(MusicController.MENU_SONG);
+                break;
+        }
     }
 
     public void NextArena() {
